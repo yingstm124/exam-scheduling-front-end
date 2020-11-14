@@ -1,0 +1,57 @@
+
+<div class="container-home">
+
+    
+
+    
+    <div>
+
+        <div class="select-container">
+
+            <div class="row">
+                <img src="https://firebasestorage.googleapis.com/v0/b/se-project-43eea.appspot.com/o/undraw_schedule_pnbk.png?alt=media&token=23187240-00c5-4ea0-8785-9c41624de01f">
+            </div>
+
+            <div class="row">
+                <h4>Semester year</h4>
+                <div class="line"></div>
+            </div>
+
+            <div>
+                <form [formGroup]="semesterForm">
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <p class="text-muted text-left">Term</p>
+                            <select class="custom-select" formControlName="term" >
+                                <option value="" selected>choose .. </option>
+                                <option>2</option>
+                            </select>
+                        </div>
+                        <div class="col-8">
+                            <p class="text-muted text-left">year</p>
+                            <select class="custom-select" formControlName="year">
+                                <option value="" selected>choose .. </option>
+                                <option>2020</option>
+                            </select>
+                        </div>   
+                    </div>
+
+                    <div class="row d-flex justify-content-end">
+                        <button class="btn btn-primary btn-manage" (click)="onSubmit()">Manage</button>
+                    </div>
+
+                </form>
+                    
+            </div>
+
+            
+            
+        </div>
+
+    </div>
+    
+      
+</div>
+
+
+

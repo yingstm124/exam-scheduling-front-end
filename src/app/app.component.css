@@ -1,0 +1,46 @@
+.navbar{
+    padding: 2% 10% 2% 10%;
+    background-color: #F3F3F3;
+
+}
+.nav {
+    margin-left: 3%;
+}
+
+.nav-link, .navbar-brand {
+    color: gray;
+    cursor: pointer;
+}
+.navbar-brand:hover {
+    color: #AB6CCE;
+    text-decoration: underline;
+}
+.nav-link:hover {
+    background-color: #AB6CCE;
+    color: white;
+    border-radius: 10px;
+    font-weight: 200%;
+}
+.fa-house-user, .fa-edit{
+    margin-right:  10px;
+}
+.fa-edit:hover {
+    color: white;
+}
+
+.container {
+    padding: 3% 1% 3% 1%;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    max-width: 40px;
+}
+
+.user-info {
+    padding: 0% 0% 0% 5%;
+}
+.nav-user-info{
+    font-size: 40%;
+}
+

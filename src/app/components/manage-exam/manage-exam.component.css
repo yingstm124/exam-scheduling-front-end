@@ -1,0 +1,60 @@
+.form-group{
+    text-align: left;
+}
+.input-group{
+    width: 100%;
+    margin-bottom: 4%;
+}
+
+.datelabel {
+    margin-right: 2%;
+}
+
+thead {
+    background-color: #B073D2;
+}
+.period-time-front {
+    background-color: white;
+    border: none;
+}
+
+.period-time {
+    color: white;
+}
+
+.date-exam {
+    color: black;
+    text-align: left;
+}
+
+* {
+    text-align: left;
+}
+.date-title {
+    padding: 1%;
+    background-color: #B073D2;
+    color: white;
+    font-size: 120%;
+}
+.list-group{
+    margin-top: 6%;
+}
+.list-box {
+    padding: 3% 4% 1% 6%;
+    background-color:#f8f7f7;
+}
+.list-item {
+    padding: 2%;
+    margin: 2%;
+    border: 2px solid white;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.perior-title {
+    color: #B073D2;
+}
+
+.not-a{
+    color: tomato;
+}

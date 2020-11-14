@@ -1,0 +1,91 @@
+.c-login{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 80%;
+    max-width: 500px;
+}
+.login{
+    width: 100%;
+    margin-top: 10%;
+    max-width: 550px;
+}
+.header-login {
+    margin-right: 10%;
+}
+.nav {
+    margin-top: 10%;
+}
+.nav-item .active{
+    background-color: #AB6CCE;
+}
+
+.nav-link {
+    color: gray;
+}
+
+.title-staff-login{
+    font-size: 150%;
+    font-weight: 100px;
+    color: #613f72;
+    text-align: left;
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+.form-signin {
+    margin: 0% 10% 10% 10%;
+}
+.form-signin .form-control:focus {
+    border-color: violet;
+}
+
+
+
+.btn-signin {
+    font-weight: 700;
+    background-color: #AB6CCE;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10%;
+}
+.btn-signin:hover {
+    background-color: #704686;
+    outline: 0;
+}
+
+.input-group {
+    margin-bottom: 2%;    
+}
+
+input {
+    margin: 0% 0% 3% 0%;
+}
+
+.or {
+    border-bottom: 1px solid black;
+    position: relative;
+    width: 100%;
+    display: block;
+    height: 1px;
+    margin: 10% 0% 8% 0%;
+}
+.or:before{
+    content: 'or';
+    width: 40px;
+	height: 18px;
+	position: absolute;
+	top: -5px;
+	right: calc(50% - 20px);
+	background-color: #fff;
+	text-align: center;
+	line-height: 10px;
+	color: #555
+}
+
+.google-plus, .fa-google-plus-g{
+    background-color: rgb(238, 49, 49);
+    border-radius: 10px;
+    color: white;
+    max-width: 500px;
+}

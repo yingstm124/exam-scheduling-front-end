@@ -1,0 +1,42 @@
+
+<nav class="navbar navbar-expand-lg">
+  
+  <a class="navbar-brand" routerLink="/">
+    <i class="fas fa-house-user"></i> Home
+  </a>
+  
+  <!-- <ul class="nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/manage-exam">
+        <i class="far fa-edit"></i> Manage Exam schedule
+      </a>
+    </li>
+  </ul> -->
+
+  <ul class="nav mr-2 mr-lg-0" *ngIf="isLogined">
+    <li class="nav-item nav-user-info">
+      <div class="row d-flex justify-content-center">
+        <div><img src={{photoUrlUser}} class="profile-pic"></div>
+        <div class="user-info">
+            <div>{{displayNameUser}}</div>
+            <div>{{emailUser}}</div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <ul class="nav mr-2 mr-lg-0" *ngIf="isLogined">
+    <li class="nav-item">
+      <button class="nav-link" (click)="logout()">Logout</button>
+    </li>
+  </ul>
+
+  
+  
+</nav>
+
+
+<div class="container">
+  <app-loading></app-loading>
+  <router-outlet></router-outlet>
+</div>

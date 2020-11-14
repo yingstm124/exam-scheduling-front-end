@@ -1,0 +1,247 @@
+
+<div class="d-flex flex-row header-bar mb-3">
+  <div class="p-2 header-bar">Semester {{term}}/{{year}}</div>
+</div>
+
+<div class="d-flex flex-row-reverse header-bar-end">
+  <div class="p-2 header-bar">
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+      New Exam
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">New Exam Schedule</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Perior</label>
+        <select class="form-control">
+          <option [value]=1>8:00 AM - 11:00 AM</option>
+          <option [value]=2>11:00 AM - 15:00 AM</option>
+          <option [value]=3>15:30 AM - 18:30 AM</option>
+        </select>
+      </div>     
+
+      <div class="form-group">
+        <label for="date-input">Exam Date</label>
+        <div>
+          <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Course</label>
+        <select class="form-control" >
+          <option *ngFor="let course of courses" value="course.id">{{course.id}} ({{course.name}})</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Room</label>
+        <select class="form-control" >
+          <option *ngFor="let room of rooms" value="room.id">{{room.id}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Examiner</label>
+        <select class="form-control">
+          <option *ngFor="let ex of examiners" value="examiner.id">{{ex.fname}} {{ex.lname}}</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="addExam()">Save changes</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Send email Modal -->
+
+
+</div>
+</div>
+
+
+<div class="d-flex flex-row-reverse tab-table mb-3">
+<div class="p-2 tab-table">
+<button (click)=displaytable(false)><i class="fas fa-bars"></i></button>
+</div>
+<div class="p-2 tab-table">
+<button (click)=displaytable(true)><i class="fas fa-th-large"></i></button>
+</div>
+</div>
+
+<!-- ----------------------grid ------------------------------------>
+<div *ngIf="open_grid">
+<div>
+<div class="content">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="period-time-front"></th>
+        <th scope="col" class="period-time table-bordered">8:00 AM - 11:00 AM</th>
+        <th scope="col" class="period-time table-bordered">12:00 PM - 15:00 PM</th>
+        <th scope="col" class="period-time table-bordered">15:30 PM - 18:30 PM</th>
+      </tr>
+    </thead>
+    
+
+    <tbody class="table table-bordered" *ngFor="let p of periods; index as i">
+        <tr>
+          <th scope="row" class="date-exam" >
+            <h5>{{p.date | date}}</h5>
+          </th>
+
+          <td>
+            <div *ngFor="let room of p.p1">
+              {{room.id}}
+              <span *ngIf="room.isEmpty == true">(Available)</span>
+              <span *ngIf="room.isEmpty == false" class="not-a">(Not Available)</span>
+            </div>
+          </td>
+
+          <td>
+            <div *ngFor="let room of p.p2">
+              {{room.id}}
+              <span *ngIf="room.isEmpty == true">(Available)</span>
+              <span *ngIf="room.isEmpty == false" class="not-a">(Not Available)</span>
+            </div>
+          </td>
+
+          <td>
+            <div *ngFor="let room of p.p3">
+              {{room.id}}
+              <span *ngIf="room.isEmpty == true">(Available)</span>
+              <span *ngIf="room.isEmpty == false" class="not-a">(Not Available)</span>
+            </div>
+          </td>
+
+          
+
+          
+               
+        </tr>
+    </tbody>
+
+
+  </table>
+</div>
+</div>
+</div>
+
+<!-- ----------------------list ------------------------------------>
+<div *ngIf="!open_grid">
+<div>
+<h4>Exam Schedule</h4>
+<div>
+<div class="list-group">
+
+  <div *ngFor="let p of periods">
+
+    <div class="date-title">{{p.date | date}}</div>
+
+    <div class="list-box">
+      <div>
+        <div class="perior-title">
+          8:00 AM - 11:00 AM
+        </div>
+      </div>
+        
+        <div *ngFor="let p1 of p.p1">
+          <div class="list-item" *ngIf="p1.exam != undefined">
+              <div class="d-flex justify-content-between" >
+                  <div>{{p1.exam.course.name}} ({{p1.exam.course.id}} )</div>
+                  <div>{{p1.exam.room.id}}</div>
+                
+                  <div>
+                      <i class="fas fa-chair"></i>
+                      {{p1.exam.room.numSeats}}
+                  </div>
+                  <button (click)="deleteExam()">remove</button>
+                  <button (click)="sendEmail()">Send email</button>
+              </div>
+          </div>
+        </div>
+    </div>
+    
+    <div class="list-box">
+      <div>
+        <div class="perior-title">
+          12:00 PM - 15:00 PM
+        </div>
+      </div>
+        
+        
+      <div *ngFor="let p2 of p.p2">
+        <div class="list-item" *ngIf="p2.exam != undefined">
+            <div class="d-flex justify-content-between" >
+                <div>{{p2.exam.course.name}} ({{p2.exam.course.id}} )</div>
+                <div>{{p2.exam.room.id}}</div>
+              
+                <div>
+                    <i class="fas fa-chair"></i>
+                    {{p2.exam.room.numSeats}}
+                </div>
+                <button (click)="deleteExam()">remove</button>
+                <button (click)="sendEmail()">Send email</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="list-box">
+      <div>
+        <div class="perior-title">
+          15:30 PM - 18:00 PM
+        </div>
+      </div>
+        
+        
+      <div *ngFor="let p3 of p.p3">
+        <div class="list-item" *ngIf="p3.exam != undefined">
+            <div class="d-flex justify-content-between" >
+                <div>{{p3.exam.course.name}} ({{p3.exam.course.id}} )</div>
+                <div>{{p3.exam.room.id}}</div>
+              
+                <div>
+                    <i class="fas fa-chair"></i>
+                    {{p3.exam.room.numSeats}}
+                </div>
+                <button (click)="deleteExam()">remove</button>
+                <button (click)="sendEmail()">Send email</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+       
+</div>
+</div>
+
+</div>
+
+
+
+
+   
+
+
+    
+
